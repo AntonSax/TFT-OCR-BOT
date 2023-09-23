@@ -999,9 +999,8 @@ class Arena:
                         self.add_trait_item_to_unit(unit)
                     if unit.item_slots_filled % 2 == 0:
                         combined_two_items = self.add_any_bis_item_from_combining_two_component_items_on_unit(unit)
-                        # TODO: Cleanup
                         # Start giving units their 'good but not BIS' items if our health gets too low or we have too many items
-                        if unit.item_slots_filled < 5 and (arena_functions.get_health() <= 30 or len([item for item in self.items if item is not None]) == 10):
+                        if self.can_give_unit_a_completed_secondary_item():
                             combined_two_items = combined_two_items or self.add_any_secondary_item_from_combining_two_component_items_on_unit(unit)
                 if not combined_two_items:
                     print(f"            Unable to complete an item for {unit.name}.")
@@ -1520,3 +1519,7 @@ class Arena:
             if unit_data["level"] == 3:
                 costs_of_units_to_three_star[unit] = game_assets.champion_gold_cost(unit)
         return costs_of_units_to_three_star
+
+    def can_give_unit_a_completed_secondary_item(self, unit: Champion):
+        return unit.item_slots_filled < 5 \
+               and (arena_functions.get_health() <= 30 or len([item for item in self.items if item is not None]) == 10)
