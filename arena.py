@@ -184,7 +184,6 @@ class Arena:
         """Returns True if there is a spot on the bench taken up and that spot is not recognized as a champion/unit."""
         return any(isinstance(slot, str) for slot in self.bench)
 
-    # TODO: This function is way too long and needs to be cleaned up.
     def move_champions(self) -> None:
         """Moves champions to the board"""
         if self.max_board_size > self.board_size:
@@ -200,27 +199,32 @@ class Arena:
                 print("  Instead of moving an unknown unit to the board, I'm going to identify what's on the bench.")
                 self.fix_bench_state()
             else:
-                print("    I think the point of this code is to always have the max units on the board?")
-                shop: list = arena_functions.get_shop()
-                for index, purchaseable_unit in enumerate(shop):
-                    gold: int = arena_functions.get_gold()
-                    valid_champ_not_in_champs_to_buy_or_board_unknown: bool = (
-                            purchaseable_unit in game_assets.CHAMPIONS and
-                            game_assets.champion_gold_cost(purchaseable_unit) <= gold and
-                            game_assets.champion_board_size(purchaseable_unit) == 1 and
-                            purchaseable_unit not in self.champs_to_buy and
-                            purchaseable_unit not in self.board_unknown
-                    )
+                self.keep_max_amount_of_units_on_the_board()
 
-                    if valid_champ_not_in_champs_to_buy_or_board_unknown:
-                        empty_bench_slot: int = arena_functions.empty_bench_slot()
-                        mk_functions.left_click(screen_coords.BUY_LOC[index].get_coords())
-                        new_champion = champion_class.create_default_champion(purchaseable_unit, empty_bench_slot, True, self.comp_to_play)
-                        sleep(0.1)  # why is this needed
-                        self.bench[empty_bench_slot] = new_champion
-                        self.move_known(new_champion)
-                        break
         return
+
+    def keep_max_amount_of_units_on_the_board(self):
+        """If we don't have units on the bench in our comp,
+           buys a unit from the shop that is not in our comp and then moves it to the board."""
+        shop: list = arena_functions.get_shop()
+        for index, purchaseable_unit in enumerate(shop):
+            gold: int = arena_functions.get_gold()
+            valid_champ_not_in_champs_to_buy_or_board_unknown: bool = (
+                    purchaseable_unit in game_assets.CHAMPIONS and
+                    game_assets.champion_gold_cost(purchaseable_unit) <= gold and
+                    game_assets.champion_board_size(purchaseable_unit) == 1 and
+                    purchaseable_unit not in self.champs_to_buy and
+                    purchaseable_unit not in self.board_unknown
+            )
+
+            if valid_champ_not_in_champs_to_buy_or_board_unknown:
+                empty_bench_slot: int = arena_functions.empty_bench_slot()
+                mk_functions.left_click(screen_coords.BUY_LOC[index].get_coords())
+                new_champion = champion_class.create_default_champion(purchaseable_unit, empty_bench_slot, True, self.comp_to_play)
+                sleep(0.1)  # why is this needed
+                self.bench[empty_bench_slot] = new_champion
+                self.move_known(new_champion)
+                break
 
     def replace_unknown(self) -> None:
         """Removes an unknown champion on the board.
