@@ -741,12 +741,10 @@ class Arena:
                     positions_of_all_unit.append(unit.board_position)
         return
 
-    # TODO: reduce code reuse
     def identify_champions_on_bench(self, mistaken_identity: bool = False):
         print("  Identifying units on the bench:")
         bench_occupied: list = arena_functions.bench_occupied_check()
         for index, bench_space in enumerate(self.bench):
-            # TODO: is check bench_space is None and bench_occupied[index] redundant?
             if bench_space is None and bench_occupied[index] and not mistaken_identity:
                 print(f"  Bench space {index} is occupied by a unit, but we don't know which unit!")
                 champ_name = arena_functions.read_unit_name_from_unit_menu_given_coords(screen_coords.BENCH_LOC[index].get_coords())

@@ -396,7 +396,6 @@ def count_number_of_item_slots_filled_on_unit(unit: Champion):
     set_number_of_item_slot_filled_on_unit(unit, item_slots_filled)
 
 
-# TODO: likely the cause of what is the double clicking when checking unknown units
 def count_number_of_item_slots_filled_on_unit_at_coords(coordinates: tuple) -> int:
     """Assumes the unit actually exists. Opens the info panel on a unit and then hovers over
        the center of each item slot that displays in that screen. If the color of that slot is not close to black,
