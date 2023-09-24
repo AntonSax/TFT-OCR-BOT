@@ -78,6 +78,18 @@ def get_champ(screen_capture: ImageGrab.Image, name_pos: Vec4, shop_pos: int, sh
     shop_array[shop_pos] = get_valid_champ(champ)
 
 
+def get_valid_unit(unit_name: str) -> str:
+    """Matches champion string to a valid champion name string and returns it"""
+    if unit_name in game_assets.ALL_UNITS:
+        return unit_name
+    for champion in game_assets.ALL_UNITS:
+        if SequenceMatcher(a=champion, b=unit_name).ratio() >= 0.7:
+            return champion
+    if unit_name is not None and len(unit_name) > 0:
+        # print(f"  [!] The champ_name {champ_name} did not match any unit in game_assets.CHAMPIONS!")
+        return ""
+
+
 def get_shop() -> list:
     """Returns the list of champions in the shop"""
     screen_capture = ImageGrab.grab(bbox=screen_coords.SHOP_POS.get_coords())
@@ -166,8 +178,7 @@ def tacticians_crown_check(self) -> None:
     try:
         if "TacticiansCrown" in item:
             print("  Tacticians Crown on bench, adding extra slot to board")
-            # TODO: why is this written this way
-            # self.max_board_size -= 1
+            self.max_board_size += 1
         else:
             print(f"{item} is not TacticiansCrown")
     except TypeError:
