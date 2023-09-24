@@ -1000,7 +1000,7 @@ class Arena:
                     if unit.item_slots_filled % 2 == 0:
                         combined_two_items = self.add_any_bis_item_from_combining_two_component_items_on_unit(unit)
                         # Start giving units their 'good but not BIS' items if our health gets too low or we have too many items
-                        if self.can_give_unit_a_completed_secondary_item():
+                        if self.can_give_unit_a_completed_secondary_item(unit):
                             combined_two_items = combined_two_items or self.add_any_secondary_item_from_combining_two_component_items_on_unit(unit)
                 if not combined_two_items:
                     print(f"            Unable to complete an item for {unit.name}.")
