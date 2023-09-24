@@ -713,13 +713,10 @@ class Arena:
                 if unit_name is None:
                     continue
                 # If the unknown unit we are looking at is a known unit on the board, also continue.
-                duplicate_unit = False
                 if self.board[index] is not None and unit_name is self.board[index].name:
-                    duplicate_unit = True
-                    break  # TODO: wait why did i make this break
-                if unit_name is not None and arena_functions.is_valid_champ(unit_name) and not duplicate_unit:
-                    print(f"        Found a valid {unit_name} unit from an unknown unit!")
-                    valid_champs.append((unit_name, index))
+                    continue
+                print(f"        Found a valid {unit_name} unit from an unknown unit!")
+                valid_champs.append((unit_name, index))
         # self.board_unknown_and_pos = valid_champs  # TODO: do i really need board_unknown_and_pos
         return valid_champs
 
