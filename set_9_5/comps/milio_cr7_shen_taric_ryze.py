@@ -22,6 +22,8 @@ INACTIVE_FINAL_COMP_TRAITS = ["Ionia", "Rogue", "Slayer", "Sorcerer", "Void"]
 
 RECOMMENDED_LEGEND = "Urf"
 
+HEALTH_TO_START_PLACING_ITEMS_ON_UNITS_RANDOMLY = 16
+
 COMP = {
     "Milio": {
         "board_position": 0,

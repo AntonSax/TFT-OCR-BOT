@@ -21,6 +21,8 @@ INACTIVE_FINAL_COMP_TRAITS = ["Bastion", "Demacia", "Multicaster", "Slayer"]
 
 RECOMMENDED_LEGEND = "Urf"
 
+HEALTH_TO_START_PLACING_ITEMS_ON_UNITS_RANDOMLY = 16
+
 COMP = {
     "KaiSa": {
         "board_position": 4,

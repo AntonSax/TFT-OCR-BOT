@@ -22,6 +22,8 @@ INACTIVE_FINAL_COMP_TRAITS = ["Noxus", "Freljord", "Piltover", "Slayer", "Shurim
 
 RECOMMENDED_LEGEND = "Lee Sin"
 
+HEALTH_TO_START_PLACING_ITEMS_ON_UNITS_RANDOMLY = 16
+
 COMP = {
     "RekSai": {
         "board_position": 14,

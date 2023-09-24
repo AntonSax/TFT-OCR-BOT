@@ -21,6 +21,8 @@ INACTIVE_FINAL_COMP_TRAITS = ["Bastion", "Multicaster", "Noxus", "Rogue", "Strat
 
 RECOMMENDED_LEGEND = "Poro"
 
+HEALTH_TO_START_PLACING_ITEMS_ON_UNITS_RANDOMLY = 16
+
 COMP = {
     "Nilah": {
         "board_position": 15,

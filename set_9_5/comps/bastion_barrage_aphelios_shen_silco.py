@@ -21,6 +21,8 @@ INACTIVE_FINAL_COMP_TRAITS = ["Ionia", "Ixtal", "Shurima"]
 
 RECOMMENDED_LEGEND = "Ezreal"
 
+HEALTH_TO_START_PLACING_ITEMS_ON_UNITS_RANDOMLY = 16
+
 COMP = {
     "Aphelios": {
         "board_position": 6,

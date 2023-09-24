@@ -23,6 +23,8 @@ INACTIVE_FINAL_COMP_TRAITS = ["Bilgewater", "Gunner", "Invoker", "Noxus", "Pilto
 
 RECOMMENDED_LEGEND = "Twisted Fate"
 
+HEALTH_TO_START_PLACING_ITEMS_ON_UNITS_RANDOMLY = 16
+
 COMP = {
     "Qiyana": {
         "board_position": 26,

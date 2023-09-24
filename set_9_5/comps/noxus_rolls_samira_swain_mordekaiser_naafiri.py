@@ -22,6 +22,8 @@ INACTIVE_FINAL_COMP_TRAITS = ["Invoker", "Slayer", "Sorcerer", "Strategist", "Va
 
 RECOMMENDED_LEGEND = "Lee Sin"
 
+HEALTH_TO_START_PLACING_ITEMS_ON_UNITS_RANDOMLY = 16
+
 COMP = {
     "Samira": {
         "board_position": 0,

@@ -1207,8 +1207,7 @@ class Arena:
              we are giving them to non-carries that will buff the carries.
            Then we take the remaining Mogul items and component items and try to give them too.
         """
-        # TODO: maybe put this value into data files, so it's not hardcoded for every comp ?
-        if self.check_health() > 16:
+        if self.check_health() > self.comp_to_play.random_item_health:
             return
         print("  Randomly adding items to our carry units since we are about to lose.")
         units_on_board_sorted_by_bis_items: list[Champion] = self.get_list_of_units_on_board_in_order_of_amount_of_total_bis_items()

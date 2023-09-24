@@ -42,6 +42,9 @@ class Comp:
         self.comp: dict = composition.COMP
         self.primary_augments: list = composition.PRIMARY_AUGMENTS
         self.secondary_augments: list = composition.SECONDARY_AUGMENTS
+        # When the hp of the tactician gets to this value
+        # it will try to use all of its remaining items, no matter what it builds.
+        self.random_item_health: int = composition.HEALTH_TO_START_PLACING_ITEMS_ON_UNITS_RANDOMLY
 
     def champions_to_buy(self) -> list[str]:
         """Creates a list of champions to buy during the game"""

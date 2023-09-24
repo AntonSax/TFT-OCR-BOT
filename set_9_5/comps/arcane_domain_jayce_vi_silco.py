@@ -21,6 +21,8 @@ INACTIVE_FINAL_COMP_TRAITS = ["Bilgewater", "Bruiser", "Challenger", "Juggernaut
 
 RECOMMENDED_LEGEND = "Urf"
 
+HEALTH_TO_START_PLACING_ITEMS_ON_UNITS_RANDOMLY = 16
+
 COMP = {
     "Jayce": {
         "board_position": 1,

@@ -21,6 +21,8 @@ INACTIVE_FINAL_COMP_TRAITS = ["Demacia", "Ionia", "Multicaster", "Noxus", "Void"
 
 RECOMMENDED_LEGEND = "Twisted Fate"
 
+HEALTH_TO_START_PLACING_ITEMS_ON_UNITS_RANDOMLY = 16
+
 COMP = {
     "Silco": {
         "board_position": 0,

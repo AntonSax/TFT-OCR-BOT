@@ -21,6 +21,8 @@ INACTIVE_FINAL_COMP_TRAITS = ["Demacia", "Juggernaut", "Strategist", "Vanquisher
 
 RECOMMENDED_LEGEND = "Lee Sin"
 
+HEALTH_TO_START_PLACING_ITEMS_ON_UNITS_RANDOMLY = 16
+
 COMP = {
     "Twisted Fate": {
         "board_position": 1,
