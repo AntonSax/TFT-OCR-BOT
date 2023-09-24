@@ -752,16 +752,7 @@ class Arena:
             # TODO: is check bench_space is None and bench_occupied[index] redundant?
             if bench_space is None and bench_occupied[index] and not mistaken_identity:
                 print(f"  Bench space {index} is occupied by a unit, but we don't know which unit!")
-                # Right-click the unit to make the unit's info appear on the right side of the screen.
-                mk_functions.right_click(screen_coords.BENCH_LOC[index].get_coords())
-                mk_functions.press_s()
-                sleep(0.05)  # a delay to make sure the info popup has enough time to animate before ocr kicks in.
-                champ_name: str = ocr.get_text(screenxy=screen_coords.SELECTED_UNIT_NAME_POS.get_coords(),
-                                               scale=3, psm=8, whitelist=ocr.ALPHABET_WHITELIST)
-                print(f"       Champ: {champ_name}")
-                champ_name = arena_functions.get_valid_champ(champ_name)
-                # Click at the default location so that the unit's info disappears.
-                mk_functions.left_click(screen_coords.DEFAULT_LOC.get_coords())
+                champ_name = arena_functions.read_unit_name_from_unit_menu_given_coords(screen_coords.BENCH_LOC[index].get_coords())
                 # Confirm this is an actual unit that can be used
                 if arena_functions.is_valid_champ(champ_name):
                     print(f"        Found a valid {champ_name} unit on the bench!")
@@ -773,16 +764,7 @@ class Arena:
                         self.champs_to_buy.remove(new_champion.name)
             elif isinstance(bench_space, Champion) and mistaken_identity:
                 print(f"  Bench space {index} is occupied by a unit, but it is possibly labeled the wrong unit.")
-                # Right-click the unit to make the unit's info appear on the right side of the screen.
-                mk_functions.right_click(screen_coords.BENCH_LOC[index].get_coords())
-                mk_functions.press_s()
-                sleep(0.05)  # a delay to make sure the info popup has enough time to animate before ocr kicks in.
-                champ_name: str = ocr.get_text(screenxy=screen_coords.SELECTED_UNIT_NAME_POS.get_coords(),
-                                               scale=3, psm=8, whitelist=ocr.ALPHABET_WHITELIST)
-                print(f"       Champ: {champ_name}")
-                champ_name = arena_functions.get_valid_champ(champ_name)
-                # Click at the default location so that the unit's info disappears.
-                mk_functions.left_click(screen_coords.DEFAULT_LOC.get_coords())
+                champ_name = arena_functions.read_unit_name_from_unit_menu_given_coords(screen_coords.BENCH_LOC[index].get_coords())
                 # Confirm this is an actual unit that can be used
                 if arena_functions.is_valid_champ(champ_name) and bench_space.name != champ_name:
                     print(f"        A {champ_name} was labeled as a {bench_space.name}.")

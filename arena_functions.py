@@ -307,18 +307,8 @@ def identify_one_champion_on_the_board(unit: Champion) -> bool:
     """Confirms that the given unit is positioned on the board by right-clicking the unit,
        and checking for the units name, if the unit's info window appears."""
     unit_board_position = identify_unit_board_position(unit)
-    # Right-click the unit to make the unit's info appear on the right side of the screen.
-    mk_functions.right_click(unit.coords)
-    # Press s to prevent the tactician from moving anywhere.
-    mk_functions.press_s()
-    sleep(0.1)
-    champ_name: str = ocr.get_text(screenxy=screen_coords.SELECTED_UNIT_NAME_POS.get_coords(),
-                                   scale=3, psm=8, whitelist=ocr.ALPHABET_WHITELIST)
-    # print(f"      OCR text: {champ_name}")
-    champ_name = get_valid_champ(champ_name)
-    # Click at the default location so that the unit's info disappears.
-    mk_functions.left_click(screen_coords.DEFAULT_LOC.get_coords())
-    if is_valid_champ(champ_name) and champ_name == unit.name:
+    valid_unit_name = read_unit_name_from_unit_menu_given_unit(unit)
+    if is_valid_champ(valid_unit_name) and valid_unit_name == unit.name:
         return True
     else:
         return False
@@ -335,20 +325,9 @@ def identify_unit_board_position(unit: Champion) -> int:
 
 def identify_one_space_on_the_board(tuple_board_space: tuple) -> str | None:
     """Tries to identify the name of the unit at the given vec2 coordinates, if a unit exists there."""
-    # Right-click the board space to make the unit's info appear on the right side of the screen,
-    # if a unit is located there.
-    mk_functions.right_click(tuple_board_space)
-    # Press s to prevent the tactician from moving anywhere.
-    mk_functions.press_s()
-    # sleep(0.1)
-    champ_name: str = ocr.get_text(screenxy=screen_coords.SELECTED_UNIT_NAME_POS.get_coords(),
-                                   scale=3, psm=8, whitelist=ocr.ALPHABET_WHITELIST)
-    # print(f"      OCR text: {champ_name}")
-    champ_name = get_valid_champ(champ_name)
-    # Click at the default location so that the unit's info disappears.
-    mk_functions.left_click(screen_coords.DEFAULT_LOC.get_coords())
-    if is_valid_champ(champ_name):
-        return champ_name
+    valid_unit_name = read_unit_name_from_unit_menu_given_coords(tuple_board_space)
+    if is_valid_champ(valid_unit_name):
+        return valid_unit_name
     else:
         return None
 
@@ -510,3 +489,24 @@ def has_enough_gold_to_reroll_shop(minimum_amount_of_gold_to_reroll_shop: int):
         return True
     else:
         return False
+
+
+def read_unit_name_from_unit_menu_given_unit(unit: Champion):
+    return read_unit_name_from_unit_menu_given_coords(unit.coords)
+
+
+def read_unit_name_from_unit_menu_given_coords(coordinates: tuple) -> str:
+    """Right-clicks a unit to open their info menu.
+       Prevents the tactician from moving further if we didn't click a unit
+       and then reads the unit's name and returns if it is a champion."""
+    # Right-click the unit to make the unit's info appear on the right side of the screen.
+    mk_functions.right_click(coordinates)
+    # Press s to prevent the tactician from moving anywhere.
+    mk_functions.press_s()
+    unit_name: str = ocr.get_text(screenxy=screen_coords.SELECTED_UNIT_NAME_POS.get_coords(),
+                                  scale=3, psm=8, whitelist=ocr.ALPHABET_WHITELIST)
+    # print(f"      OCR text: {champ_name}")
+    unit_name = get_valid_unit(unit_name)
+    # Click at the default location so that the unit's info disappears.
+    mk_functions.left_click(screen_coords.DEFAULT_LOC.get_coords())
+    return unit_name
