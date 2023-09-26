@@ -161,8 +161,8 @@ NON_CHAMPION_UNITS: dict[str, dict[str, int]] = \
      "T-Hex": {"Gold": 0, "Board Size": 0},
      "Void Remora": {"Gold": 0, "Board Size": 0}}
 
-# Anything that takes up a space on the board.
-ALL_UNITS: set[str]
+# Anything that takes up a space on the board. Equivalent to union-ing the dicts.
+ALL_UNITS: dict[str, dict[str, int]] = dict(list(CHAMPIONS.items()) + list(NON_CHAMPION_UNITS.items()))
 
 ROUNDS: set[str] = {"1-1", "1-2", "1-3", "1-4",
                     "2-1", "2-2", "2-3", "2-4", "2-5", "2-6", "2-7",
