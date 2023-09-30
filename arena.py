@@ -283,7 +283,7 @@ class Arena:
             returned_number = arena_functions.identify_component_anvil(index)
             if returned_number != 0:
                 mk_functions.press_e(screen_coords.BENCH_LOC[index].get_coords())
-                sleep(0.2)
+                sleep(0.2)  # briefly sleep so that the armory/shop interface for the anvil can appear.
                 screen_coords_vec2_tuple = screen_coords.BUY_LOC[2].get_coords()
                 if returned_number == 3:
                     print("      Selecting emblem from the Tome of Traits shop.")
