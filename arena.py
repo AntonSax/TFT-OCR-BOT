@@ -482,6 +482,8 @@ class Arena:
                             print(f"    Bench no longer full. Purchased {champion}")
                             if champion in self.champs_to_buy:
                                 self.champs_to_buy.remove(champion)
+                        else:
+                            return
             first_run = False
         return
 
@@ -1172,7 +1174,7 @@ class Arena:
            to the desire star level. Sorts that list of units, by the amount of items they need, in descending order
            so that we duplicate most important champions first.
            Will only use non-lesser champion duplicators on units that cost 4 or 5."""
-        print("    Looking for champion duplicators.")
+        # print("    Looking for champion duplicators.")
         lesser_duplicator_index = self.get_index_of_one_lesser_champion_duplicators_on_bench()
         normal_duplicator_index = self.get_index_of_one_champion_duplicators_on_bench()
         # Exit the function sooner if we don't have any champion duplicators
