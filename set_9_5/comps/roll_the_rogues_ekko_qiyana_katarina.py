@@ -53,7 +53,7 @@ COMP = {
     "Katarina": {
         "board_position": 24,
         "best_in_slot": ["IonicSpark", "NightHarvester"],
-        "secondary_items": ["Crownguard", "RabadonsDeathcap"],
+        "secondary_items": ["Crownguard", "HandofJustice", "RabadonsDeathcap"],
         "support_items_to_accept": [],
         "trait_items_to_accept": ["SlayerEmblem"],
         "ornn_items_to_accept": [],
@@ -64,8 +64,8 @@ COMP = {
     },
     "Silco": {
         "board_position": 0,
-        "best_in_slot": [],
-        "secondary_items": ["BlueBuff", "Morellonomicon", "RabadonsDeathcap"],
+        "best_in_slot": ["BlueBuff", "Morellonomicon", "JeweledGauntlet"],
+        "secondary_items": ["RabadonsDeathcap"],
         "support_items_to_accept": [],
         "trait_items_to_accept": ["RogueEmblem"],
         "ornn_items_to_accept": [],
@@ -89,7 +89,7 @@ COMP = {
     "Neeko": {
         "board_position": 25,
         "best_in_slot": [],
-        "secondary_items": [],
+        "secondary_items": ["Morellonomicon", "GargoyleStoneplate", "WarmogsArmor"],
         "support_items_to_accept": [],
         "trait_items_to_accept": [],
         "ornn_items_to_accept": [],
@@ -172,7 +172,7 @@ COMP = {
     },
     "Soraka": {
         "board_position": 2,
-        "best_in_slot": [],
+        "best_in_slot": ["BlueBuff"],
         "secondary_items": [],
         "support_items_to_accept": [],
         "trait_items_to_accept": [],
