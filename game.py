@@ -144,7 +144,6 @@ class Game:
         self.arena.increase_max_board_size()
         self.print_arena_values()
         self.message_queue.put("CLEAR")
-        sleep(2)
         # Click at the default location so ensure the game is the focused window.
         mk_functions.left_click(screen_coords.DEFAULT_LOC.get_coords())
         # the Ehrenmount (Demacia) pool can give anvils early which can fuck up the bot.
@@ -229,7 +228,9 @@ class Game:
         sleep(1)
         print("  Checking health at the beginning of PvP Round, so I know how much health I have before shopping.")
         self.arena.check_health()
+        seconds_in_round = 30
         if self.round in game_assets.AUGMENT_ROUNDS:
+            seconds_in_round = 50
             sleep(1)
             self.arena.pick_augment(False, [])
             print("  Sleeping for 2.5 seconds.")
@@ -260,22 +261,22 @@ class Game:
             self.arena.clear_anvil()
         self.arena.spend_gold()
 
-        if time.time() - self.start_time_of_round >= 5.0:  # number picked randomly
+        if seconds_in_round - (time.time() - self.start_time_of_round) >= 5.0:  # number picked randomly
             self.arena.move_champions()
         else:
-            print(f"  {time.time()} - {self.start_time_of_round} = {time.time() - self.start_time_of_round}")
+            print(f"  {seconds_in_round} - ({time.time()} - {self.start_time_of_round}) = {seconds_in_round - (time.time() - self.start_time_of_round)}")
             print("  Less than 5.0 seconds left in planning. No time to move champions.")
 
-        if time.time() - self.start_time_of_round >= 5.0:  # number picked randomly
+        if seconds_in_round - (time.time() - self.start_time_of_round) >= 5.0:  # number picked randomly
             self.arena.replace_unknown()
         else:
-            print(f"  {time.time()} - {self.start_time_of_round} = {time.time() - self.start_time_of_round}")
+            print(f"  {seconds_in_round} - ({time.time()} - {self.start_time_of_round}) = {seconds_in_round - (time.time() - self.start_time_of_round)}")
             print("  Less than 5.0 seconds left in planning. No time to replace unknown units.")
 
-        if time.time() - self.start_time_of_round >= 5.0:  # number picked randomly
+        if seconds_in_round - (time.time() - self.start_time_of_round) >= 5.0:  # number picked randomly
             self.arena.replace_units_not_in_our_comp()
         else:
-            print(f"  {time.time()} - {self.start_time_of_round} = {time.time() - self.start_time_of_round}")
+            print(f"  {seconds_in_round} - ({time.time()} - {self.start_time_of_round}) = {seconds_in_round - (time.time() - self.start_time_of_round)}")
             print("  Less than 5.0 seconds left in planning. No time to replace units not in our comp.")
 
         if self.arena.final_comp:
@@ -285,12 +286,12 @@ class Game:
         self.arena.bench_cleanup()
 
         # number 5.0 picked randomly
-        if self.round in game_assets.ITEM_PLACEMENT_ROUNDS and time.time() - self.start_time_of_round >= 5.0 \
+        if self.round in game_assets.ITEM_PLACEMENT_ROUNDS and (seconds_in_round - (time.time() - self.start_time_of_round)) >= 5.0 \
                 or arena_functions.get_health() <= 15 or len(self.arena.items) >= 8:
             self.arena.give_items_to_units()
             self.arena.add_random_items_on_strongest_units_at_one_loss_left()
         else:
-            print(f"  {time.time()} - {self.start_time_of_round} = {time.time() - self.start_time_of_round}")
+            print(f"  {seconds_in_round} - ({time.time()} - {self.start_time_of_round}) = {seconds_in_round - (time.time() - self.start_time_of_round)}")
             print("  Less than 5.0 seconds left in planning. No time to give items to units.")
 
         self.end_round_tasks()
