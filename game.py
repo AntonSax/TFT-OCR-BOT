@@ -135,9 +135,6 @@ class Game:
         self.message_queue.put("CLEAR")
         self.arena.set_board_size(self.arena.board_size + 1)
         self.arena.spend_gold()
-        # the Ehrenmount (Demacia) pool can give anvils early which can fuck up the bot.
-        # we can do this while the one unit is fighting the minions.
-        self.arena.clear_anvil()
         self.end_round_tasks()
 
     def third_round(self) -> None:
@@ -150,6 +147,9 @@ class Game:
         sleep(2)
         # Click at the default location so ensure the game is the focused window.
         mk_functions.left_click(screen_coords.DEFAULT_LOC.get_coords())
+        # the Ehrenmount (Demacia) pool can give anvils early which can fuck up the bot.
+        # we can do this while the one unit is fighting the minions.
+        self.arena.clear_anvil()
         self.arena.move_unknown_units_to_bench()
         # Picking up item orbs takes too long for this round.
         self.arena.fix_bench_state()
