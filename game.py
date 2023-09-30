@@ -286,8 +286,8 @@ class Game:
         self.arena.bench_cleanup()
 
         # number 5.0 picked randomly
-        if self.round in game_assets.ITEM_PLACEMENT_ROUNDS and (seconds_in_round - (time.time() - self.start_time_of_round)) >= 5.0 \
-                or arena_functions.get_health() <= 15 or len(self.arena.items) >= 8:
+        if (seconds_in_round - (time.time() - self.start_time_of_round)) >= 5.0 and \
+                (self.round in game_assets.ITEM_PLACEMENT_ROUNDS or arena_functions.get_health() <= 15 or len(self.arena.items) >= 8):
             self.arena.give_items_to_units()
             self.arena.add_random_items_on_strongest_units_at_one_loss_left()
         else:
