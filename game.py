@@ -4,6 +4,7 @@ Handles tasks that happen each game round
 
 import multiprocessing
 import random
+import time
 from time import sleep, perf_counter
 
 import win32gui
@@ -32,7 +33,7 @@ class Game:
         self.time: None = None
         self.forfeit_time: int = settings.FORFEIT_TIME + random.randint(50, 150)
         self.found_window = False
-        self.seconds_remaining_in_phase: int = -1
+        self.start_time_of_round = -1
 
         print("\n[!] Searching for game window")
         while not self.found_window:
@@ -83,7 +84,7 @@ class Game:
             self.round: str = game_functions.get_round()
 
             # Display the seconds remaining for this phase in real time.
-            self.seconds_remaining_in_phase: int = arena_functions.get_seconds_remaining()
+            self.start_time_of_round = time.time()
             labels = [(f"{arena_functions.get_seconds_remaining()}",
                        screen_coords.SECONDS_REMAINING_UNTIL_NEXT_STEP_LOC.get_coords(), -40, -10)]
             self.message_queue.put(("LABEL", labels))
@@ -259,20 +260,23 @@ class Game:
             self.arena.clear_anvil()
         self.arena.spend_gold()
 
-        if self.seconds_remaining_in_phase >= 7:  # number picked randomly
+        if time.time() - self.start_time_of_round >= 5.0:  # number picked randomly
             self.arena.move_champions()
         else:
-            print("  Less than 7 seconds left in planning. No time to move champions.")
+            print(f"  {time.time()} - {self.start_time_of_round} = {time.time() - self.start_time_of_round}")
+            print("  Less than 5.0 seconds left in planning. No time to move champions.")
 
-        if self.seconds_remaining_in_phase >= 7:  # number picked randomly
+        if time.time() - self.start_time_of_round >= 5.0:  # number picked randomly
             self.arena.replace_unknown()
         else:
-            print("  Less than 7 seconds left in planning. No time to replace unknown units.")
+            print(f"  {time.time()} - {self.start_time_of_round} = {time.time() - self.start_time_of_round}")
+            print("  Less than 5.0 seconds left in planning. No time to replace unknown units.")
 
-        if self.seconds_remaining_in_phase >= 7:  # number picked randomly
+        if time.time() - self.start_time_of_round >= 5.0:  # number picked randomly
             self.arena.replace_units_not_in_our_comp()
         else:
-            print("  Less than 7 seconds left in planning. No time to replace units not in our comp.")
+            print(f"  {time.time()} - {self.start_time_of_round} = {time.time() - self.start_time_of_round}")
+            print("  Less than 5.0 seconds left in planning. No time to replace units not in our comp.")
 
         if self.arena.final_comp:
             self.arena.final_comp_check()
@@ -280,13 +284,14 @@ class Game:
             self.arena.final_comp = True
         self.arena.bench_cleanup()
 
-        # number 7 picked randomly
-        if self.round in game_assets.ITEM_PLACEMENT_ROUNDS and self.seconds_remaining_in_phase >= 7 \
+        # number 5.0 picked randomly
+        if self.round in game_assets.ITEM_PLACEMENT_ROUNDS and time.time() - self.start_time_of_round >= 5.0 \
                 or arena_functions.get_health() <= 15 or len(self.arena.items) >= 8:
             self.arena.give_items_to_units()
             self.arena.add_random_items_on_strongest_units_at_one_loss_left()
         else:
-            print("  Less than 7 seconds left in planning. No time to give items to units.")
+            print(f"  {time.time()} - {self.start_time_of_round} = {time.time() - self.start_time_of_round}")
+            print("  Less than 5.0 seconds left in planning. No time to give items to units.")
 
         self.end_round_tasks()
 
