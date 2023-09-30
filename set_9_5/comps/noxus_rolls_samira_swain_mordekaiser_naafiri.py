@@ -42,7 +42,7 @@ COMP = {
         "best_in_slot": ["Crownguard", "ProtectorsVow", "GargoyleStoneplate"],
         "secondary_items": ["Evenshroud", "IonicSpark", "Redemption", "SunfireCape", "WarmogsArmor"],
         "support_items_to_accept": [],
-        "trait_items_to_accept": ["ChallengerEmblem", "InvokerEmblem", "JuggernautEmblem", "ShurimaEmblem", "SorcererEmblem"],
+        "trait_items_to_accept": ["ChallengerEmblem", "InvokerEmblem", "JuggernautEmblem", "ShurimaEmblem"],
         "ornn_items_to_accept": ["AnimaVisage", "EternalWinter", "Hullcrusher", "MogulsMail", "ObsidianCleaver"],
         "zaun_items_to_accept": [],
         "level": 2,
