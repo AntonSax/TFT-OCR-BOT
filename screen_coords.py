@@ -37,13 +37,13 @@ BOARD_HEALTH_POS: list[Vec4] = [
     Vec4(GameWindow(1115, 430, 1215, 524)),
     Vec4(GameWindow(1235, 430, 1335, 524)),
 
-    Vec4(GameWindow(530, 365, 630, 420)),
-    Vec4(GameWindow(645, 365, 745, 420)),
-    Vec4(GameWindow(785, 365, 885, 420)),
-    Vec4(GameWindow(915, 365, 1015, 420)),
-    Vec4(GameWindow(1045, 365, 1145, 420)),
-    Vec4(GameWindow(1185, 365, 1285, 420)),
-    Vec4(GameWindow(1315, 365, 1415, 420)),
+    Vec4(GameWindow(530, 365, 630, 425)),
+    Vec4(GameWindow(645, 365, 745, 425)),
+    Vec4(GameWindow(785, 365, 885, 425)),
+    Vec4(GameWindow(915, 365, 1015, 425)),
+    Vec4(GameWindow(1045, 365, 1145, 425)),
+    Vec4(GameWindow(1185, 365, 1285, 425)),
+    Vec4(GameWindow(1315, 365, 1415, 425)),
 
     # Top Row
     Vec4(GameWindow(465, 280, 745, 362)),
@@ -114,6 +114,7 @@ AUGMENT_POS: list[Vec4] = [
 # Where the mouse will click when the player needs
 AUGMENT_LOC: list[Vec2] = [Vec2(549, 445), Vec2(955, 445), Vec2(1365, 445)]
 
+# Where the mouse will click to re-roll the augments the player can choose from.
 # Where the mouse will click to re-roll the augments the player can choose from.
 AUGMENT_ROLL: list[Vec2] = [Vec2(554, 875), Vec2(960, 875), Vec2(1366, 875)]
 
@@ -241,7 +242,7 @@ TACTICIAN_HEALTH_IN_DMG_CHART_POS: Vec4 = Vec4(GameWindow(1786, 210, 1822, 238))
 
 # The area of the number of seconds remaining before the next step of the game happens, located at the top of the
 # screen.
-SECONDS_REMAINING_UNTIL_NEXT_STEP_POS: Vec4 = Vec4(GameWindow(1134, 8, 1152, 30))
+SECONDS_REMAINING_UNTIL_NEXT_STEP_POS: Vec4 = Vec4(GameWindow(1128, 8, 1160, 30))
 
 # The center point position number of seconds remaining before the next step of the game happens, located at the top
 # of the screen.
