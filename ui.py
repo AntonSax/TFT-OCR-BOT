@@ -5,6 +5,7 @@ import multiprocessing
 from win32gui import SetWindowLong, GetWindowLong, SetLayeredWindowAttributes
 from win32con import WS_EX_LAYERED, WS_EX_TRANSPARENT, GWL_EXSTYLE
 import screeninfo
+from PIL import Image, ImageTk
 
 
 class UI:
@@ -80,4 +81,22 @@ class UI:
     def ui_loop(self) -> None:
         """Loop that runs indefinetly to process UI changes"""
         self.consume_text()
+        # self.create_retangle(50, 110, 300, 280, fill="blue", alpha=.5)
+        # self.create_retangle(40, 90, 420, 250, fill="red", alpha=.5)
         self.root.mainloop()
+
+    def create_retangle(self, x, y, a, b, **options):
+        images = []
+        canvas = tk.Canvas()
+        if 'alpha' in options:
+            # Calculate the alpha transparency for every color (RGB)
+            alpha = int(options.pop('alpha') * 255)
+            # Use the fill variable to fill the shape with transparent color
+            fill = options.pop('fill')
+            fill = self.root.winfo_rgb(fill) + (alpha,)
+            image = Image.new('RGBA', (a-x, b-y), fill)
+            images.append(ImageTk.PhotoImage(image))
+            canvas.create_image(x, y, image=images[-1], anchor='nw')
+            canvas.create_rectangle(x, y, a, b, **options)
+        canvas.pack()
+
