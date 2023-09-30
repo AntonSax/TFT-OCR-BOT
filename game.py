@@ -258,20 +258,35 @@ class Game:
         if self.round in game_assets.ANVIL_ROUNDS:
             self.arena.clear_anvil()
         self.arena.spend_gold()
-        self.arena.move_champions()
-        self.arena.replace_unknown()
-        self.arena.replace_units_not_in_our_comp()
+
+        if self.seconds_remaining_in_phase >= 7:  # number picked randomly
+            self.arena.move_champions()
+        else:
+            print("  Less than 7 seconds left in planning. No time to move champions.")
+
+        if self.seconds_remaining_in_phase >= 7:  # number picked randomly
+            self.arena.replace_unknown()
+        else:
+            print("  Less than 7 seconds left in planning. No time to replace unknown units.")
+
+        if self.seconds_remaining_in_phase >= 7:  # number picked randomly
+            self.arena.replace_units_not_in_our_comp()
+        else:
+            print("  Less than 7 seconds left in planning. No time to replace units not in our comp.")
+
         if self.arena.final_comp:
             self.arena.final_comp_check()
         elif self.arena.check_health() <= 15:
             self.arena.final_comp = True
         self.arena.bench_cleanup()
 
-        if self.round in game_assets.ITEM_PLACEMENT_ROUNDS \
+        # number 7 picked randomly
+        if self.round in game_assets.ITEM_PLACEMENT_ROUNDS and self.seconds_remaining_in_phase >= 7 \
                 or arena_functions.get_health() <= 15 or len(self.arena.items) >= 8:
-            sleep(1)  # why do we sleep here?
             self.arena.give_items_to_units()
             self.arena.add_random_items_on_strongest_units_at_one_loss_left()
+        else:
+            print("  Less than 7 seconds left in planning. No time to give items to units.")
 
         self.end_round_tasks()
 
