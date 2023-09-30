@@ -178,7 +178,7 @@ class Game:
             mk_functions.left_click(screen_coords.CAROUSEL_TO_BOARD_BUTTON_LOC.get_coords())
             valid_champs = self.arena.identify_unknown_champions_on_board()
             for name_and_pos in valid_champs:
-                self.arena.create_champion_object_from_unit_name_on_the_board(name_and_pos[0], name_and_pos[1])
+                self.arena.create_champion_object_from_unit_name_on_the_board(name_and_pos[0], name_and_pos[1], False)
         else:
             print("  Getting a champ from the carousel")
             game_functions.get_champ_carousel(self.round)
