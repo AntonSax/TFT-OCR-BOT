@@ -377,7 +377,7 @@ class Arena:
         """Removes all instances of the given Champion from the bench if it is on the bench.
            Removes the given Champion from the list of units to purchase.
            Removes one instance of the given Champion from the board."""
-        print(f"    Looking to remove {champion} from the bench, board, and list of champs to buy.")
+        print(f"    Looking to remove {champion.name} from the bench, board, and list of champs to buy.")
         for index, slot in enumerate(self.bench):
             if isinstance(slot, Champion) and slot.name == champion.name:
                 print(f"      Removing {champion} from the bench.")
@@ -412,7 +412,6 @@ class Arena:
                         if not champion.final_comp and champion.size == slot.size:
                             print(f"  Replacing non-final-comp {champion.name} with {slot.name}")
                             self.remove_champion(champion)
-                            champion.print_all_class_variables()
                             self.move_known(slot)
                             break
         return
