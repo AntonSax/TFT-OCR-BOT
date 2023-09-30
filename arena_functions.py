@@ -367,10 +367,13 @@ def identify_component_anvil(index: int) -> int:
     anvil_text: str = ocr.get_text(screenxy=anvil_coords_tuple, scale=3, psm=7,
                                    whitelist=ocr.ALPHABET_WHITELIST)
     if valid_anvil(anvil_text):
+        print("    Found a Component Anvil.")
         return 1
     elif valid_ornn_anvil(anvil_text):
+        print("    Found an Ornn Item Anvil.")
         return 2
     elif valid_tome_of_traits(anvil_text):
+        print("    Found a Tome of Traits.")
         return 3
     else:
         return 0

@@ -286,12 +286,12 @@ class Arena:
                 sleep(0.2)
                 screen_coords_vec2_tuple = screen_coords.BUY_LOC[2].get_coords()
                 if returned_number == 3:
-                    print("    Selecting emblem from the Tome of Traits shop.")
+                    print("      Selecting emblem from the Tome of Traits shop.")
                     emblem_shop_index = self.pick_one_of_four_emblems_from_shop()
                     if emblem_shop_index is not None:
                         screen_coords_vec2_tuple = screen_coords.CHOOSE_FROM_TOME_OF_TRAITS_SHOP_LOC[emblem_shop_index].get_coords()
                 else:
-                    print("    Selecting middle item from Anvil/Ornn Item Anvil.")
+                    print("      Selecting middle item from Anvil/Ornn Item Anvil.")
                 mk_functions.left_click(screen_coords_vec2_tuple)
         return
 
