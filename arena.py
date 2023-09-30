@@ -276,7 +276,8 @@ class Arena:
     def clear_anvil(self) -> None:
         """Clears anvil on the bench,
            selects a good Emblem if a Tome of Traits was sold,
-           otherwise select the middle item."""
+           otherwise select the middle item.
+           Anvils cannot be sold during combat."""
         print("  Looking for anvils to sell.")
         bench_units = arena_functions.bench_occupied_check()
         for index, unit in enumerate(bench_units):
@@ -719,8 +720,10 @@ class Arena:
                     continue
                 # If the unknown unit we are looking at is a known unit on the board, also continue.
                 if self.board[index] is not None and unit_name is self.board[index].name:
+                    print(f"        Found a valid {unit_name} unit from an unknown unit. self.board[index].name: {self.board[index].name}")
                     continue
-                print(f"        Found a valid {unit_name} unit from an unknown unit. self.board[index].name: {self.board[index].name}")
+                else:
+                    print(f"        Found a valid {unit_name} unit from an unknown unit. self.board[index]: {self.board[index]}")
                 valid_champs.append((unit_name, index))
         # self.board_unknown_and_pos = valid_champs  # TODO: do i really need board_unknown_and_pos
         return valid_champs
