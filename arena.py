@@ -58,6 +58,8 @@ class Arena:
         """Iterates through bench and fixes invalid slots"""
         self.identify_champions_on_bench(mistaken_identiy)
         self.sell_non_comp_units_on_bench()
+        if self.final_comp:
+            self.sell_non_final_comp_units_on_bench()
 
     def move_unknown_units_to_bench(self):
         units_on_board_found_from_health = self.board_occupied_check()
@@ -687,6 +689,7 @@ class Arena:
             for board_index, unit in enumerate(self.board):
                 if isinstance(unit, Champion):
                     if not arena_functions.identify_one_champion_on_the_board(unit):
+                        # TODO: probably start the identify_unknown_units_on_the_board at this point
                         print(f"         Was not able to confirm that {unit.name} is still on the board.")
                         self.board[self.board.index(unit)] = None
                         self.board_names.remove(unit.name)
@@ -782,6 +785,18 @@ class Arena:
                         and self.board_size >= self.max_board_size \
                         and unit_on_bench.name not in self.board_names:
                     print(f"    Sold non-comp unit: {unit_on_bench} at bench index: {index}.")
+                    self.sell_unit(unit_on_bench, index)
+        return
+
+    def sell_non_final_comp_units_on_bench(self):
+        """Sells any units on the bench that aren't in our final comp,
+           so long as the board is full and the unit that will be sold doesn't have a copy on the board."""
+        print("  Selling non-final-comp units that are on the bench.")
+        for index, unit_on_bench in enumerate(self.bench):
+            if isinstance(unit_on_bench, Champion):
+                if unit_on_bench.name in self.comp_to_play.comp and self.board_size >= self.max_board_size \
+                        and unit_on_bench.name not in self.board_names and not unit_on_bench.final_comp:
+                    print(f"    Sold non-final-comp unit: {unit_on_bench} at bench index: {index}.")
                     self.sell_unit(unit_on_bench, index)
         return
 
