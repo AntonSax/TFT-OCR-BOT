@@ -720,7 +720,7 @@ class Arena:
                 # If the unknown unit we are looking at is a known unit on the board, also continue.
                 if self.board[index] is not None and unit_name is self.board[index].name:
                     continue
-                print(f"        Found a valid {unit_name} unit from an unknown unit!")
+                print(f"        Found a valid {unit_name} unit from an unknown unit. self.board[index].name: {self.board[index].name}")
                 valid_champs.append((unit_name, index))
         # self.board_unknown_and_pos = valid_champs  # TODO: do i really need board_unknown_and_pos
         return valid_champs
@@ -805,7 +805,7 @@ class Arena:
         mk_functions.press_e(screen_coords.BENCH_LOC[index].get_coords())
         self.bench[index] = None
 
-    def create_champion_object_from_unit_name_on_the_board(self, unit_name: str, index: int):
+    def create_champion_object_from_unit_name_on_the_board(self, unit_name: str, index: int, increase_board_size: bool = True):
         """Given the unit's name and the location on the board it should be placed at.
            This function creates a Champion unit that has the designated items
            and final_comp value from the comps file and adds the unit to the board."""
@@ -813,7 +813,8 @@ class Arena:
         new_champion = champion_class.create_default_champion(unit_name, index, False, self.comp_to_play)
         print(f"      Created the Champion object for the {unit_name}.")
         self.board_names.append(unit_name)
-        self.set_board_size(self.board_size + new_champion.size)
+        if increase_board_size:
+            self.set_board_size(self.board_size + new_champion.size)
         # Remove the unit that was unknown, and is now no longer unknown, from the unknown list.
         if unit_name in self.board_unknown:
             print(f"      Removing the unknown unit {unit_name} from the list of unknown units.")
@@ -1192,7 +1193,7 @@ class Arena:
            as I'm guessing those units will have the most traits active
            and therefore make the most value out of getting an Emblem of one of their traits.
            This function doesn't select the Emblem from the Armory shop."""
-        print("    Try using Scroll of Knowledge.")
+        # print("    Try using Scroll of Knowledge.")
         if "ScrollofKnowledge" not in self.items:
             return
         self.add_one_item_to_unit(unit, self.items.index("ScrollofKnowledge"))
@@ -1202,7 +1203,7 @@ class Arena:
            Uses it on the first unit with the most BIS items, since the item upgrades craftable completed items
            to Radiant versions. This will fail if the unit isn't holding any completed items.
            This function doesn't select the item from the Armory shop."""
-        print("    Try using Masterwork Upgrade.")
+        # print("    Try using Masterwork Upgrade.")
         if "MasterworkUpgrade" not in self.items:
             return
         if len(unit.non_component_items) > 0:
