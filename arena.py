@@ -449,8 +449,10 @@ class Arena:
             shop = arena_functions.get_shop()
 
             if collections.Counter(previous_shop) == collections.Counter(shop):
+                print("  Trying to refresh a shop, but nothing is changing. Possibly in an infinite loop.")
                 infinite_loop_count += 1
             if infinite_loop_count >= 6:
+                print("    Breaking out of an infinite loop.")
                 break
             previous_shop = shop
 
@@ -673,6 +675,7 @@ class Arena:
                     return champ
         return None
 
+    # TODO: Needs to be updated since we don't use the list format for our self.board anymore.
     def identify_champions_on_board(self):
         """Identify units that are on the board. If they are a champion, we right-click them to verify.
            If this a unit that is on our board, we don't need to do anything else.

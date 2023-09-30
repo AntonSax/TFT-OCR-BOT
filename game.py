@@ -231,7 +231,9 @@ class Game:
         if self.round in game_assets.AUGMENT_ROUNDS:
             sleep(1)
             self.arena.pick_augment(False, [])
+            print("  Sleeping for 2.5 seconds.")
             sleep(2.5)
+            print("  Done sleeping for 2.5 seconds.")
 
         # Have this happen after the augment selection.
         self.arena.update_level_via_ocr()
