@@ -123,7 +123,7 @@ def exit_game() -> None:
     mk_functions.left_click(screen_coords.EXIT_NOW_LOC.get_coords())
     mk_functions.left_click(screen_coords.EXIT_NOW_LOC.get_coords())  # done twice in case the game wasn't the focused window.
     print("  Sleeping so that we can take a look at the end game screen.")
-    print("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+    print("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
     sleep(25)  # sleep for 25 seconds to add time between games, so that the end-game screen can show.
 
 
