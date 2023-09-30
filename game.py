@@ -97,60 +97,30 @@ class Game:
 
             if self.round != ran_round:
                 if self.round in game_assets.SECOND_ROUND:
-                    second_round_process = multiprocessing.Process(target=self.second_round())
-                    second_round_process.start()
-                    second_round_process.join(8)
-                    if second_round_process.is_alive():
-                        second_round_process.terminate()
-                        print("Timeout of the Second Round occurred. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    self.second_round()
                     mk_functions.right_click(screen_coords.TACTICIAN_RESTING_SPOT_LOC.get_coords())
                     ran_round: str = self.round
                 elif self.round in game_assets.THIRD_ROUND:
-                    third_round_process = multiprocessing.Process(target=self.third_round())
-                    third_round_process.start()
-                    third_round_process.join(15)
-                    if third_round_process.is_alive():
-                        third_round_process.terminate()
-                        print("Timeout of the Third Round occurred. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    self.third_round()
                     mk_functions.right_click(screen_coords.TACTICIAN_RESTING_SPOT_LOC.get_coords())
                     ran_round: str = self.round
                 elif self.round in game_assets.CAROUSEL_ROUND:
-                    carousel_round_process = multiprocessing.Process(target=self.carousel_round())
-                    carousel_round_process.start()
-                    carousel_round_process.join(45)
-                    if carousel_round_process.is_alive():
-                        carousel_round_process.terminate()
-                        print("Timeout of Carousel Round occurred. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    self.carousel_round()
                     mk_functions.right_click(screen_coords.TACTICIAN_RESTING_SPOT_LOC.get_coords())
                     ran_round: str = self.round
                 elif self.round in game_assets.AUGMENT_ROUNDS:
                     game_functions.default_pos()
-                    augment_round_process = multiprocessing.Process(target=self.pvp_round())
-                    augment_round_process.start()
-                    augment_round_process.join(35)
-                    if augment_round_process.is_alive():
-                        augment_round_process.terminate()
-                        print("Timeout of Augment PvP Round occurred. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    self.pvp_round()
                     mk_functions.right_click(screen_coords.TACTICIAN_RESTING_SPOT_LOC.get_coords())
                     ran_round: str = self.round
                 elif self.round in game_assets.PVE_ROUND:
                     game_functions.default_pos()
-                    pve_round_process = multiprocessing.Process(target=self.pve_round())
-                    pve_round_process.start()
-                    pve_round_process.join(25)
-                    if pve_round_process.is_alive():
-                        pve_round_process.terminate()
-                        print("Timeout of PvE Round occurred. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    self.pve_round()
                     mk_functions.right_click(screen_coords.TACTICIAN_RESTING_SPOT_LOC.get_coords())
                     ran_round: str = self.round
                 elif self.round in game_assets.PVP_ROUND:
                     game_functions.default_pos()
-                    pvp_round_process = multiprocessing.Process(target=self.pvp_round())
-                    pvp_round_process.start()
-                    pvp_round_process.join(25)
-                    if pvp_round_process.is_alive():
-                        pvp_round_process.terminate()
-                        print("Timeout of PvP Round occurred. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                    self.pvp_round()
                     mk_functions.right_click(screen_coords.TACTICIAN_RESTING_SPOT_LOC.get_coords())
                     ran_round: str = self.round
             sleep(0.5)
