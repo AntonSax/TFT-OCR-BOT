@@ -1115,7 +1115,7 @@ class Arena:
         """Searches through the unit's BIS items it wants to build and returns the complete BIS item
            if it can be crafted from component items currently on the bench."""
         for complete_item in unit.secondary_items:
-            if self.is_possible_to_combine_two_components_into_given_bis_item(unit, complete_item):
+            if self.is_possible_to_combine_two_components_into_given_secondary_item(unit, complete_item):
                 return complete_item
             else:
                 return None
