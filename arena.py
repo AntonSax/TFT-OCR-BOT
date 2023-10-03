@@ -1135,7 +1135,7 @@ class Arena:
             self.add_one_item_to_unit(unit, self.items.index(component_one))
             self.add_one_item_to_unit(unit, self.items.index(component_two))
             unit.non_component_items.append(complete_item)
-            unit.build.remove(complete_item)
+            unit.secondary_items.remove(complete_item)
             # Just make sure we don't give them the same item twice.
             if complete_item in unit.build:
                 unit.build.remove(complete_item)
