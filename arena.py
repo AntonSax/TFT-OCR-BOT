@@ -1371,8 +1371,6 @@ class Arena:
                 if self.level > game_assets.LEVELS_WITH_BEST_ODDS_PER_UNIT_COST_DICT[cost] and unit in self.champs_to_buy:
                     print(f"       Level: {self.level}")
                     return False
-                else:
-                    return True
         return True
 
     def get_the_costs_of_unit_we_want_to_three_star(self):
@@ -1385,4 +1383,4 @@ class Arena:
 
     def can_give_unit_a_completed_secondary_item(self, unit: Champion):
         return unit.item_slots_filled < 5 \
-               and (arena_functions.get_health() <= 30 or len([item for item in self.items if item is not None]) == 10)
+               and (arena_functions.get_health() <= 40 or len([item for item in self.items if item is not None]) == 10)
