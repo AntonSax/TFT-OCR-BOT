@@ -4,13 +4,14 @@ This comp is a bit of a meme: CR7 refers to Cristiano Ronaldo and his jersey num
 Comp from https://app.mobalytics.gg/tft/comps-guide/millio-cr7-2VMjGJBsC4FWcslLvfM7pRG3Ekq
 Set: 9.5
 Strategy: Default: This comp uses the standard leveling strategy that revolves around a 4-cost carry.
+  This comp was labeled as default on mobalytics, but its kinda difficult to 3-star Milio if we are leveling up at all.
 Difficulty: Unknown
 Legend: Caitlyn, Urf, Poro
 """
 
 NAME = "Milio CR7"
 
-STRATEGY = "Default"
+STRATEGY = "Slow Roll"
 
 DIFFICULTY = "Unknown"
 
