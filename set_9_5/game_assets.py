@@ -333,14 +333,14 @@ ALL_SILVER_AUGMENTS: set[str] = \
 
 ALL_GOLD_AUGMENTS: set[str] = \
     {"A Cut Above", "Adrenaline Rush", "All Natural II", "All That Shimmers", "Ancient Archives I", "Ascension",
-     "Balanced Budget II", "Bastion Crest", "Battle Ready II", "Big Grab Bag", "Bruiser Crest", "Built Different II",
+     "Balanced Budget II", "Bastion Crest", "Battle Ready II", "Big Grab Bag", "Bilgewater Crest", "Bruiser Crest", "Built Different II",
      "Buried Treasures II", "Capricious Forge", "Caretaker's Favor", "Challenger Crest", "Chemtech Enhancements",
      "Combat Caster", "Contagion", "Cybernetic Bulk II", "Cybernetic Leech II", "Dedication", "Defensive Dash",
      "Demacia Crest", "Demonflare", "Double Trouble II", "Dueling Gunners", "Early Education", "Endurance Training",
      "Escort Quest", "Final Grab Bag II", "Freljord Heart", "Frequent Flier", "Gargantuan Resolve",
      "Gifts from the Fallen", "Glacial Breeze", "Gotta Go Fast!!! II", "Gunner Crest", "Harmacist II",
      "Haunted Shell", "Healing Orbs II", "Hustler", "Idealism", "Indomitable Will", "Infusion", "Invoker Crest",
-     "Ionia Crest", "Item Grab Bag II", "It Pays to Learn II", "Jeweled Lotus II"  "Job Well Done",
+     "Ionia Crest", "Item Grab Bag II", "It Pays to Learn II", "Jeweled Lotus II",  "Job Well Done",
      "Juggernaut Crest", "Knowledge Download II", "Know Your Enemy", "Last Stand", "Library Card",
      "Long Distance Pals II", "Loving Invocation", "Magic Wand", "Mana Burn", "Martyr", "Medium Forge",
      "Metabolic Accelerator", "Money Money!", "Morning Light", "Not Today", "Noxus Crest", "Overcharged Manafont",
@@ -361,7 +361,7 @@ ALL_GOLD_AUGMENTS: set[str] = \
 
 ALL_PRISMATIC_AUGMENTS: set[str] = \
     {"Ancient Archives II", "Balanced Budget III", "Bastion Crown", "Battle Ready III", "Binary Airdrop",
-     "Birthday Present", "Blinding Speed", "Bruiser Crown", "Built Different III", "Buried Treasures III",
+     "Birthday Present", "Bilgewater Crown", "Blinding Speed", "Bruiser Crown", "Built Different III", "Buried Treasures III",
      "Caretaker's Chosen", "Challenger Crown", "Cruel Pact", "Cursed Crown", "Cybernetic Bulk III",
      "Cybernetic Leech III", "Demacia Crown", "Double Trouble III", "Endless Horde", "Endless Horde+",
      "Final Ascension", "Final Reserves", "Freljord Soul", "Giant Grab Bag", "Gifts From Above", "Golden Ticket",
