@@ -1369,7 +1369,7 @@ class Arena:
             three_star_unit_costs = self.get_the_costs_of_unit_we_want_to_three_star()
             for unit, cost in three_star_unit_costs.items():
                 if self.level >= game_assets.LEVELS_WITH_BEST_ODDS_PER_UNIT_COST_DICT[cost] and unit in self.champs_to_buy:
-                    print(f"     Still need to purchase {unit.name}. Cannot level up past {self.level}.")
+                    print(f"     Still need to purchase {unit}. Cannot level up past {self.level}.")
                     return False
         return True
 
