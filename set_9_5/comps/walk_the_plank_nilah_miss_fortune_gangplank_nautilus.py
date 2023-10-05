@@ -188,6 +188,7 @@ PRIMARY_AUGMENTS: list[str] = [
 
 SECONDARY_AUGMENTS: list[str] = [
     "Battle Ready I",
+    "Item Grab Bag I",
     "Money!",
     "Pandora's Items I",
     "Tiny Power I",
@@ -196,6 +197,7 @@ SECONDARY_AUGMENTS: list[str] = [
     "Ascension",
     "Balanced Budget II",
     "Battle Ready II",
+    "Item Grab Bag II",
     "Last Stand",
     "Magic Wand"
     "Money Money!",
@@ -209,6 +211,7 @@ SECONDARY_AUGMENTS: list[str] = [
 
     "Battle Ready III",
     "Final Ascension",
+    "Item Grab Bag III",
     "Lucky Gloves",
     "Money Money Money!",
     "Pandora's Items III",
