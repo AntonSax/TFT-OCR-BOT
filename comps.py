@@ -8,6 +8,7 @@ Strategies:
 """
 import set_9_5.comps.arcane_domain_jayce_vi_silco as arcane_domain
 import set_9_5.comps.heart_of_the_cards_twisted_fate_illaoi_nilah_miss_fortune as heart_of_the_cards
+import set_9_5.comps.heart_of_the_cards_v2_twisted_fate_swain_jarvan as heart_of_the_cards_v2
 import set_9_5.comps.roll_the_rogues_ekko_qiyana_katarina as roll_the_rogues
 import set_9_5.comps.walk_the_plank_nilah_miss_fortune_gangplank_nautilus as walk_the_plank
 import set_9_5.comps.super_nash_bros_kaisa_chogath_belveth as super_nash_bros
@@ -17,8 +18,8 @@ import set_9_5.comps.bruiser_bites_malzahar_chogath_reksai as bruiser_bites
 import set_9_5.comps.noxus_rolls_samira_swain_mordekaiser_naafiri as noxus_rolls
 import random
 
-COMPS_TO_SELECT_RANDOMLY_FROM: list = [bruiser_bites, noxus_rolls]
-
+# COMPS_TO_SELECT_RANDOMLY_FROM: list = [arcane_domain, heart_of_the_cards, heart_of_the_cards_v2, roll_the_rogues, walk_the_plank, milio_cr7, super_nash_bros, bastion_barrage, bruiser_bites, noxus_rolls]
+COMPS_TO_SELECT_RANDOMLY_FROM: list = [bruiser_bites, heart_of_the_cards_v2, noxus_rolls]
 
 def return_random_comp():
     return random.choice(COMPS_TO_SELECT_RANDOMLY_FROM)
